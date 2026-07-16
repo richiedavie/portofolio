@@ -541,6 +541,99 @@
       margin-bottom: 0.75rem;
     }
 
+    .portfolio-item {
+      cursor: zoom-in;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .portfolio-item:hover,
+    .portfolio-item:focus-visible {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 38px rgba(255, 255, 255, 0.16) !important;
+      outline: none;
+    }
+
+    .image-popup {
+      position: fixed;
+      inset: 0;
+      z-index: 2000;
+      display: grid;
+      place-items: center;
+      padding: 24px;
+      background: rgba(0, 0, 0, 0.78);
+      backdrop-filter: blur(10px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.24s ease, visibility 0.24s ease;
+    }
+
+    .image-popup.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-popup-panel {
+      position: relative;
+      width: min(100%, 1050px);
+      max-height: min(82vh, 760px);
+      padding: 18px;
+      overflow: auto;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      background: #101014;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.58);
+      transform: translateY(16px) scale(0.98);
+      transition: transform 0.24s ease;
+    }
+
+    .image-popup.is-open .image-popup-panel {
+      transform: translateY(0) scale(1);
+    }
+
+    .image-popup-close {
+      position: absolute;
+      top: 8px;
+      right: 8px;
+      z-index: 1;
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: 50%;
+      background: rgba(26, 26, 32, 0.9);
+      color: #fff;
+      cursor: pointer;
+      font-size: 1.5rem;
+      line-height: 1;
+    }
+
+    .image-popup-close:hover,
+    .image-popup-close:focus-visible {
+      background: #fff;
+      color: #000;
+      outline: none;
+    }
+
+    .image-popup-gallery {
+      display: grid;
+      gap: 14px;
+    }
+
+    .image-popup-gallery img {
+      display: block;
+      width: 100%;
+      max-height: calc(82vh - 36px);
+      object-fit: contain;
+      border-radius: 12px;
+    }
+
+    body.popup-open { overflow: hidden; }
+
+    @media (max-width: 576px) {
+      .image-popup { padding: 12px; }
+      .image-popup-panel { padding: 10px; border-radius: 16px; }
+      .image-popup-gallery img { max-height: calc(82vh - 20px); }
+    }
+
     /* Experience */
     :root {
       --bg: #000;
@@ -794,8 +887,30 @@
           <img src="Polri.png" alt="More projects coming soon" class="img-fluid rounded mt-3" />
         </div>
       </div>
+      <div class="col-md-6">
+        <div class="portfolio-item p-4 rounded-4 bg-dark text-light shadow h-100">
+          <h4 class="fw-bold">Project Dino Website</h4>
+          <p class="text-muted">December 2025</p>
+          <div class="project-description">
+            <p>Dino Wallet is a modern digital donation box that automatically and systematically counts the amount of
+              money collected. The app is designed to streamline the process of collecting, recording, and reporting
+              donations, making it more transparent, efficient, and accurate. Dino’s Wallet was created to allow us to
+              voluntarily help those in need. It involves donating money without expecting anything in return. In a
+              social context, donations are a form of compassion that plays a vital role in bringing about positive
+              change in society.</p>
+          </div>
+          <img src="Dino.png" alt="Portfolio v2 Preview" class="img-fluid rounded mt-3" />
+        </div>
+      </div>
     </div>
   </section>
+
+  <div class="image-popup" id="imagePopup" aria-hidden="true">
+    <div class="image-popup-panel" role="dialog" aria-modal="true" aria-label="Project images">
+      <button class="image-popup-close" id="imagePopupClose" type="button" aria-label="Close image popup">&times;</button>
+      <div class="image-popup-gallery" id="imagePopupGallery"></div>
+    </div>
+  </div>
 
   <!-- ══ EXPERIENCE ══ -->
   <section id="experience">
@@ -966,6 +1081,59 @@
       const navEl = document.getElementById('nav-links');
       toggle.addEventListener('click', () => navEl.classList.toggle('active'));
       navEl.addEventListener('click', e => { if (e.target.tagName === 'A') navEl.classList.remove('active'); });
+
+      // ── Portfolio image popup ──
+      const imagePopup = document.getElementById('imagePopup');
+      const imagePopupClose = document.getElementById('imagePopupClose');
+      const imagePopupGallery = document.getElementById('imagePopupGallery');
+      const portfolioItems = document.querySelectorAll('.portfolio-item');
+      let lastFocusedCard = null;
+
+      function closeImagePopup() {
+        imagePopup.classList.remove('is-open');
+        imagePopup.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('popup-open');
+        imagePopupGallery.replaceChildren();
+        if (lastFocusedCard) lastFocusedCard.focus();
+      }
+
+      function openImagePopup(card) {
+        const images = card.querySelectorAll('img');
+        if (!images.length) return;
+
+        lastFocusedCard = card;
+        imagePopupGallery.replaceChildren(...Array.from(images, image => {
+          const popupImage = document.createElement('img');
+          popupImage.src = image.currentSrc || image.src;
+          popupImage.alt = image.alt;
+          return popupImage;
+        }));
+        imagePopup.classList.add('is-open');
+        imagePopup.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('popup-open');
+        imagePopupClose.focus();
+      }
+
+      portfolioItems.forEach(card => {
+        card.tabIndex = 0;
+        card.setAttribute('role', 'button');
+        card.setAttribute('aria-label', 'Open project images');
+        card.addEventListener('click', () => openImagePopup(card));
+        card.addEventListener('keydown', event => {
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openImagePopup(card);
+          }
+        });
+      });
+
+      imagePopupClose.addEventListener('click', closeImagePopup);
+      imagePopup.addEventListener('click', event => {
+        if (event.target === imagePopup) closeImagePopup();
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && imagePopup.classList.contains('is-open')) closeImagePopup();
+      });
     });
   </script>
 
