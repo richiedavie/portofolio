@@ -618,7 +618,8 @@
       gap: 14px;
     }
 
-    .image-popup-gallery img {
+    .image-popup-gallery img,
+    .image-popup-gallery video {
       display: block;
       width: 100%;
       max-height: calc(82vh - 36px);
@@ -626,12 +627,24 @@
       border-radius: 12px;
     }
 
-    body.popup-open { overflow: hidden; }
+    body.popup-open {
+      overflow: hidden;
+    }
 
     @media (max-width: 576px) {
-      .image-popup { padding: 12px; }
-      .image-popup-panel { padding: 10px; border-radius: 16px; }
-      .image-popup-gallery img { max-height: calc(82vh - 20px); }
+      .image-popup {
+        padding: 12px;
+      }
+
+      .image-popup-panel {
+        padding: 10px;
+        border-radius: 16px;
+      }
+
+      .image-popup-gallery img,
+      .image-popup-gallery video {
+        max-height: calc(82vh - 20px);
+      }
     }
 
     /* Experience */
@@ -884,7 +897,7 @@
               high accessibility, this dashboard ensures that users of all technical levels can effortlessly navigate
               the platform and securely communicate with authorities.</p>
           </div>
-          <img src="Polri.png" alt="More projects coming soon" class="img-fluid rounded mt-3" />
+          <img src="Polri.png" alt="Polri Mobile" class="img-fluid rounded mt-3" />
         </div>
       </div>
       <div class="col-md-6">
@@ -899,15 +912,32 @@
               social context, donations are a form of compassion that plays a vital role in bringing about positive
               change in society.</p>
           </div>
-          <img src="Dino.png" alt="Portfolio v2 Preview" class="img-fluid rounded mt-3" />
+          <img src="Dino.png" alt="Dino website" class="img-fluid rounded mt-3" />
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="portfolio-item p-4 rounded-4 bg-dark text-light shadow h-100">
+          <h4 class="fw-bold">Blender Animating 3D</h4>
+          <p class="text-muted">June 2025</p>
+          <div class="project-description">
+            <p>A professional product visualization featuring three beverage bottles. This animation focuses on
+              multi-camera switching and dynamic rotation to showcase the product from various angles within a clean,
+              studio-lit environment.</p>
+          </div>
+          <video class="img-fluid rounded mt-3" muted loop autoplay playsinline preload="metadata"
+            aria-label="Product animation preview">
+            <source src="ProductAnimation.mp4" type="video/mp4" />
+            Your browser does not support MP4 video.
+          </video>
         </div>
       </div>
     </div>
   </section>
 
   <div class="image-popup" id="imagePopup" aria-hidden="true">
-    <div class="image-popup-panel" role="dialog" aria-modal="true" aria-label="Project images">
-      <button class="image-popup-close" id="imagePopupClose" type="button" aria-label="Close image popup">&times;</button>
+    <div class="image-popup-panel" role="dialog" aria-modal="true" aria-label="Project media">
+      <button class="image-popup-close" id="imagePopupClose" type="button"
+        aria-label="Close image popup">&times;</button>
       <div class="image-popup-gallery" id="imagePopupGallery"></div>
     </div>
   </div>
@@ -1082,7 +1112,7 @@
       toggle.addEventListener('click', () => navEl.classList.toggle('active'));
       navEl.addEventListener('click', e => { if (e.target.tagName === 'A') navEl.classList.remove('active'); });
 
-      // ── Portfolio image popup ──
+      // ── Portfolio media popup ──
       const imagePopup = document.getElementById('imagePopup');
       const imagePopupClose = document.getElementById('imagePopupClose');
       const imagePopupGallery = document.getElementById('imagePopupGallery');
@@ -1098,14 +1128,25 @@
       }
 
       function openImagePopup(card) {
-        const images = card.querySelectorAll('img');
-        if (!images.length) return;
+        const mediaItems = card.querySelectorAll('img, video');
+        if (!mediaItems.length) return;
 
         lastFocusedCard = card;
-        imagePopupGallery.replaceChildren(...Array.from(images, image => {
+        imagePopupGallery.replaceChildren(...Array.from(mediaItems, media => {
+          if (media.tagName === 'VIDEO') {
+            const popupVideo = document.createElement('video');
+            popupVideo.src = media.currentSrc || media.querySelector('source')?.src;
+            popupVideo.controls = true;
+            popupVideo.autoplay = true;
+            popupVideo.muted = true;
+            popupVideo.playsInline = true;
+            popupVideo.setAttribute('aria-label', media.getAttribute('aria-label') || 'Project video');
+            return popupVideo;
+          }
+
           const popupImage = document.createElement('img');
-          popupImage.src = image.currentSrc || image.src;
-          popupImage.alt = image.alt;
+          popupImage.src = media.currentSrc || media.src;
+          popupImage.alt = media.alt;
           return popupImage;
         }));
         imagePopup.classList.add('is-open');
@@ -1117,7 +1158,7 @@
       portfolioItems.forEach(card => {
         card.tabIndex = 0;
         card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', 'Open project images');
+        card.setAttribute('aria-label', 'Open project media');
         card.addEventListener('click', () => openImagePopup(card));
         card.addEventListener('keydown', event => {
           if (event.key === 'Enter' || event.key === ' ') {
