@@ -541,13 +541,16 @@
       margin-bottom: 0.75rem;
     }
 
-    .portfolio-item {
+    .portfolio-item > img,
+    .portfolio-item > video {
       cursor: zoom-in;
       transition: transform 0.25s ease, box-shadow 0.25s ease;
     }
 
-    .portfolio-item:hover,
-    .portfolio-item:focus-visible {
+    .portfolio-item > img:hover,
+    .portfolio-item > video:hover,
+    .portfolio-item > img:focus-visible,
+    .portfolio-item > video:focus-visible {
       transform: translateY(-6px);
       box-shadow: 0 18px 38px rgba(255, 255, 255, 0.16) !important;
       outline: none;
@@ -1137,54 +1140,51 @@
       const imagePopup = document.getElementById('imagePopup');
       const imagePopupClose = document.getElementById('imagePopupClose');
       const imagePopupGallery = document.getElementById('imagePopupGallery');
-      const portfolioItems = document.querySelectorAll('.portfolio-item');
-      let lastFocusedCard = null;
+      const portfolioMedia = document.querySelectorAll('.portfolio-item > img, .portfolio-item > video');
+      let lastFocusedMedia = null;
 
       function closeImagePopup() {
         imagePopup.classList.remove('is-open');
         imagePopup.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('popup-open');
         imagePopupGallery.replaceChildren();
-        if (lastFocusedCard) lastFocusedCard.focus();
+        if (lastFocusedMedia) lastFocusedMedia.focus();
       }
 
-      function openImagePopup(card) {
-        const mediaItems = card.querySelectorAll('img, video');
-        if (!mediaItems.length) return;
+      function openImagePopup(media) {
+        lastFocusedMedia = media;
+        let popupMedia;
 
-        lastFocusedCard = card;
-        imagePopupGallery.replaceChildren(...Array.from(mediaItems, media => {
-          if (media.tagName === 'VIDEO') {
-            const popupVideo = document.createElement('video');
-            popupVideo.src = media.currentSrc || media.querySelector('source')?.src;
-            popupVideo.controls = true;
-            popupVideo.autoplay = true;
-            popupVideo.muted = true;
-            popupVideo.playsInline = true;
-            popupVideo.setAttribute('aria-label', media.getAttribute('aria-label') || 'Project video');
-            return popupVideo;
-          }
+        if (media.tagName === 'VIDEO') {
+          popupMedia = document.createElement('video');
+          popupMedia.src = media.currentSrc || media.querySelector('source')?.src;
+          popupMedia.controls = true;
+          popupMedia.autoplay = true;
+          popupMedia.muted = true;
+          popupMedia.playsInline = true;
+          popupMedia.setAttribute('aria-label', media.getAttribute('aria-label') || 'Project video');
+        } else {
+          popupMedia = document.createElement('img');
+          popupMedia.src = media.currentSrc || media.src;
+          popupMedia.alt = media.alt;
+        }
 
-          const popupImage = document.createElement('img');
-          popupImage.src = media.currentSrc || media.src;
-          popupImage.alt = media.alt;
-          return popupImage;
-        }));
+        imagePopupGallery.replaceChildren(popupMedia);
         imagePopup.classList.add('is-open');
         imagePopup.setAttribute('aria-hidden', 'false');
         document.body.classList.add('popup-open');
         imagePopupClose.focus();
       }
 
-      portfolioItems.forEach(card => {
-        card.tabIndex = 0;
-        card.setAttribute('role', 'button');
-        card.setAttribute('aria-label', 'Open project media');
-        card.addEventListener('click', () => openImagePopup(card));
-        card.addEventListener('keydown', event => {
+      portfolioMedia.forEach(media => {
+        media.tabIndex = 0;
+        media.setAttribute('role', 'button');
+        media.setAttribute('aria-label', `Open ${media.alt || media.getAttribute('aria-label') || 'project media'} in a popup`);
+        media.addEventListener('click', () => openImagePopup(media));
+        media.addEventListener('keydown', event => {
           if (event.key === 'Enter' || event.key === ' ') {
             event.preventDefault();
-            openImagePopup(card);
+            openImagePopup(media);
           }
         });
       });
