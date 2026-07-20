@@ -473,6 +473,162 @@
       filter: grayscale(0%);
     }
 
+    /* More projects — horizontal, touch-friendly card rail */
+    #more-projects {
+      padding: 1rem 2rem 5rem;
+      background: #000;
+      color: #fff;
+    }
+
+    .more-projects-header {
+      max-width: 1140px;
+      margin: 0 auto 1.6rem;
+      display: flex;
+      align-items: end;
+      justify-content: space-between;
+      gap: 1.5rem;
+    }
+
+    .more-projects-header h2 {
+      margin: 0;
+      font-size: clamp(2rem, 4vw, 2.8rem);
+      font-weight: 700;
+    }
+
+    .more-projects-header p {
+      margin: 0.55rem 0 0;
+      color: rgba(255, 255, 255, 0.56);
+    }
+
+    .project-slider-controls {
+      display: flex;
+      gap: 0.65rem;
+      flex: 0 0 auto;
+    }
+
+    .project-slider-button {
+      width: 42px;
+      height: 42px;
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      border-radius: 50%;
+      background: transparent;
+      color: #fff;
+      cursor: pointer;
+      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
+    }
+
+    .project-slider-button:hover,
+    .project-slider-button:focus-visible {
+      background: #fff;
+      color: #000;
+      transform: translateY(-2px);
+      outline: none;
+    }
+
+    .more-projects-viewport {
+      max-width: 1140px;
+      margin: 0 auto;
+      overflow: hidden;
+    }
+
+    .more-projects-track {
+      display: flex;
+      gap: 1rem;
+      overflow-x: auto;
+      padding: 0.3rem 0.2rem 1.1rem;
+      scroll-snap-type: x mandatory;
+      scroll-behavior: smooth;
+      scrollbar-width: none;
+      cursor: grab;
+      user-select: none;
+    }
+
+    .more-projects-track::-webkit-scrollbar { display: none; }
+    .more-projects-track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
+
+    .more-project-card {
+      position: relative;
+      flex: 0 0 min(82vw, 315px);
+      height: 420px;
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.16);
+      border-radius: 18px;
+      background: #151515;
+      scroll-snap-align: start;
+      cursor: pointer;
+      isolation: isolate;
+      transition: transform 0.28s ease, border-color 0.28s ease;
+    }
+
+    .more-project-card::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(180deg, transparent 28%, rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    .more-project-card:hover,
+    .more-project-card:focus-visible {
+      transform: translateY(-8px);
+      border-color: rgba(255, 255, 255, 0.7);
+      outline: none;
+    }
+
+    .more-project-card img {
+      width: 100%;
+      height: 100%;
+      display: block;
+      object-fit: cover;
+      filter: grayscale(100%);
+      transition: transform 0.45s ease, filter 0.35s ease;
+    }
+
+    .more-project-card:hover img,
+    .more-project-card:focus-visible img {
+      filter: grayscale(0%);
+      transform: scale(1.07);
+    }
+
+    .more-project-card-content {
+      position: absolute;
+      z-index: 2;
+      right: 1.35rem;
+      bottom: 1.25rem;
+      left: 1.35rem;
+    }
+
+    .more-project-card .project-type {
+      display: block;
+      margin-bottom: 0.45rem;
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.73rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .more-project-card h3 { margin: 0; font-size: 1.28rem; font-weight: 700; }
+    .more-project-card .open-project {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.35rem;
+      margin-top: 0.7rem;
+      padding: 0;
+      border: 0;
+      background: transparent;
+      color: #fff;
+      font: inherit;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    .more-project-card .open-project:hover,
+    .more-project-card .open-project:focus-visible {
+      text-decoration: underline;
+      outline: none;
+    }
+
     .modal-content {
       background: #111;
       color: #fff;
@@ -598,12 +754,6 @@
       position: relative;
       width: min(100%, 1050px);
       max-height: min(82vh, 760px);
-      padding: 18px;
-      overflow: auto;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 22px;
-      background: #101014;
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.58);
       transform: translateY(16px) scale(0.98);
       transition: transform 0.24s ease;
     }
@@ -612,26 +762,44 @@
       transform: translateY(0) scale(1);
     }
 
+    .image-popup-content {
+      width: 100%;
+      max-height: min(82vh, 760px);
+      padding: 18px;
+      overflow: auto;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      border-radius: 22px;
+      background: #101014;
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.58);
+    }
+
     .image-popup-close {
       position: absolute;
-      top: 8px;
-      right: 8px;
-      z-index: 1;
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255, 255, 255, 0.18);
+      top: -12px;
+      right: -12px;
+      z-index: 10;
+      width: 32px;
+      height: 32px;
+      border: 2px solid rgba(255, 255, 255, 0.85);
       border-radius: 50%;
-      background: rgba(26, 26, 32, 0.9);
+      background: #1a1a20;
       color: #fff;
       cursor: pointer;
-      font-size: 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.95rem;
       line-height: 1;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+      transition: all 0.2s ease;
     }
 
     .image-popup-close:hover,
     .image-popup-close:focus-visible {
       background: #fff;
       color: #000;
+      border-color: #fff;
+      transform: scale(1.1);
       outline: none;
     }
 
@@ -644,7 +812,7 @@
     .image-popup-gallery video {
       display: block;
       width: 100%;
-      max-height: calc(82vh - 36px);
+      max-height: calc(82vh - 72px);
       object-fit: contain;
       border-radius: 12px;
     }
@@ -658,9 +826,17 @@
         padding: 12px;
       }
 
-      .image-popup-panel {
+      .image-popup-content {
         padding: 10px;
         border-radius: 16px;
+      }
+
+      .image-popup-close {
+        top: -8px;
+        right: -8px;
+        width: 28px;
+        height: 28px;
+        font-size: 0.85rem;
       }
 
       .image-popup-gallery img,
@@ -782,6 +958,10 @@
       .project-description {
         max-height: 100px;
       }
+
+      #more-projects { padding: 0 1rem 3.5rem; }
+      .more-projects-header { align-items: flex-start; }
+      .more-projects-header p { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -796,6 +976,7 @@
         <li><a href="#hero" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
+        <li><a href="#more-projects">More Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -961,11 +1142,78 @@
     </div>
   </section>
 
+  <!-- ══ MORE PROJECTS ══ -->
+  <section id="more-projects" aria-labelledby="more-projects-title">
+    <div class="more-projects-header">
+      <div>
+        <h2 id="more-projects-title">More Projects</h2>
+        <p>Swipe through the collection, then select a project to see its story.</p>
+      </div>
+      <div class="project-slider-controls" aria-label="More project navigation">
+        <button class="project-slider-button" id="moreProjectsPrevious" type="button" aria-label="Previous projects">
+          <i class="fa-solid fa-arrow-left"></i>
+        </button>
+        <button class="project-slider-button" id="moreProjectsNext" type="button" aria-label="Next projects">
+          <i class="fa-solid fa-arrow-right"></i>
+        </button>
+      </div>
+    </div>
+    <div class="more-projects-viewport">
+      <div class="more-projects-track" id="moreProjectsTrack" aria-label="More project cards" tabindex="0">
+        <article class="more-project-card" tabindex="0" data-title="Anko Illustration" data-type="Digital art"
+          data-image="Anko.jpeg" data-description="A character illustration project focused on color, personality, and a polished digital-art presentation.">
+          <img src="Anko.jpeg" alt="Anko character illustration">
+          <div class="more-project-card-content"><span class="project-type">Digital art</span><h3>Anko Illustration</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+        </article>
+        <article class="more-project-card" tabindex="0" data-title="Sayori Character Art" data-type="Illustration"
+          data-image="sayori ddlc.jpg" data-description="A character-art piece that explores a softer visual mood and a recognizable game-inspired design.">
+          <img src="sayori ddlc.jpg" alt="Sayori character artwork">
+          <div class="more-project-card-content"><span class="project-type">Illustration</span><h3>Sayori Character Art</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+        </article>
+        <article class="more-project-card" tabindex="0" data-title="Kyouko Visual Study" data-type="Character design"
+          data-image="Kyouko.jpeg" data-description="A visual study built around character styling, composition, and a clean portrait treatment.">
+          <img src="Kyouko.jpeg" alt="Kyouko character visual study">
+          <div class="more-project-card-content"><span class="project-type">Character design</span><h3>Kyouko Visual Study</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+        </article>
+        <article class="more-project-card" tabindex="0" data-title="Tutorial Showcase" data-type="Content design"
+          data-image="tutorial.png" data-description="A visual tutorial project designed to make information easier to follow with a clear, engaging layout.">
+          <img src="tutorial.png" alt="Tutorial project preview">
+          <div class="more-project-card-content"><span class="project-type">Content design</span><h3>Tutorial Showcase</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+        </article>
+        <article class="more-project-card" tabindex="0" data-title="Creative Screenshot Series" data-type="Visual project"
+          data-image="Screenshot (66).png" data-description="A visual project exploring interface details and presentation through a concise screenshot series.">
+          <img src="Screenshot (66).png" alt="Creative screenshot series preview">
+          <div class="more-project-card-content"><span class="project-type">Visual project</span><h3>Creative Screenshot Series</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+        </article>
+        <article class="more-project-card" tabindex="0" data-title="Together Artwork" data-type="Personal artwork"
+          data-image="Together.png" data-description="A personal artwork that brings together character-focused visuals in one finished composition.">
+          <img src="Together.png" alt="Together artwork preview">
+          <div class="more-project-card-content"><span class="project-type">Personal artwork</span><h3>Together Artwork</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
+        </article>
+      </div>
+    </div>
+  </section>
+
   <div class="image-popup" id="imagePopup" aria-hidden="true">
     <div class="image-popup-panel" role="dialog" aria-modal="true" aria-label="Project media">
-      <button class="image-popup-close" id="imagePopupClose" type="button"
-        aria-label="Close image popup">&times;</button>
-      <div class="image-popup-gallery" id="imagePopupGallery"></div>
+      <button class="image-popup-close" id="imagePopupClose" type="button" aria-label="Close image popup">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="image-popup-content">
+        <div class="image-popup-gallery" id="imagePopupGallery"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- More Projects uses the same pop-out design as Portfolio. -->
+  <div class="image-popup" id="moreProjectPopup" aria-hidden="true">
+    <div class="image-popup-panel" role="dialog" aria-modal="true" aria-label="More project preview">
+      <button class="image-popup-close" id="moreProjectPopupClose" type="button" aria-label="Close project preview">
+        <i class="fa-solid fa-xmark"></i>
+      </button>
+      <div class="image-popup-content">
+        <div class="image-popup-gallery" id="moreProjectPopupGallery"></div>
+      </div>
     </div>
   </div>
 
@@ -1175,8 +1423,8 @@
         if (lastFocusedMedia) lastFocusedMedia.focus();
       }
 
-      function openImagePopup(media) {
-        lastFocusedMedia = media;
+      function openImagePopup(media, focusTarget = media) {
+        lastFocusedMedia = focusTarget;
         let popupMedia;
 
         if (media.tagName === 'VIDEO') {
@@ -1219,6 +1467,96 @@
       });
       document.addEventListener('keydown', event => {
         if (event.key === 'Escape' && imagePopup.classList.contains('is-open')) closeImagePopup();
+      });
+
+      // ── More projects slider ──
+      const moreProjectsTrack = document.getElementById('moreProjectsTrack');
+      const moreProjectCards = document.querySelectorAll('.more-project-card');
+      const previousProjects = document.getElementById('moreProjectsPrevious');
+      const nextProjects = document.getElementById('moreProjectsNext');
+      const moreProjectPopup = document.getElementById('moreProjectPopup');
+      const moreProjectPopupClose = document.getElementById('moreProjectPopupClose');
+      const moreProjectPopupGallery = document.getElementById('moreProjectPopupGallery');
+      let pointerStartX = 0;
+      let scrollStartX = 0;
+      let wasDragging = false;
+      let lastFocusedMoreProjectButton = null;
+
+      function slideProjects(direction) {
+        const card = moreProjectCards[0];
+        const distance = card ? card.offsetWidth + 16 : 320;
+        moreProjectsTrack.scrollBy({ left: direction * distance, behavior: 'smooth' });
+      }
+
+      function openMoreProjectPopup(image, button) {
+        const popupImage = document.createElement('img');
+        popupImage.src = image.currentSrc || image.src;
+        popupImage.alt = image.alt;
+        lastFocusedMoreProjectButton = button;
+        moreProjectPopupGallery.replaceChildren(popupImage);
+        moreProjectPopup.classList.add('is-open');
+        moreProjectPopup.setAttribute('aria-hidden', 'false');
+        document.body.classList.add('popup-open');
+        moreProjectPopupClose.focus();
+      }
+
+      function closeMoreProjectPopup() {
+        moreProjectPopup.classList.remove('is-open');
+        moreProjectPopup.setAttribute('aria-hidden', 'true');
+        document.body.classList.remove('popup-open');
+        moreProjectPopupGallery.replaceChildren();
+        if (lastFocusedMoreProjectButton) lastFocusedMoreProjectButton.focus();
+      }
+
+      previousProjects.addEventListener('click', () => slideProjects(-1));
+      nextProjects.addEventListener('click', () => slideProjects(1));
+      moreProjectsTrack.addEventListener('keydown', event => {
+        if (event.key === 'ArrowLeft') { event.preventDefault(); slideProjects(-1); }
+        if (event.key === 'ArrowRight') { event.preventDefault(); slideProjects(1); }
+      });
+
+      moreProjectsTrack.addEventListener('pointerdown', event => {
+        pointerStartX = event.clientX;
+        scrollStartX = moreProjectsTrack.scrollLeft;
+        wasDragging = false;
+        moreProjectsTrack.setPointerCapture(event.pointerId);
+        moreProjectsTrack.classList.add('is-dragging');
+      });
+      moreProjectsTrack.addEventListener('pointermove', event => {
+        if (!moreProjectsTrack.hasPointerCapture(event.pointerId)) return;
+        const movement = event.clientX - pointerStartX;
+        if (Math.abs(movement) > 5) wasDragging = true;
+        moreProjectsTrack.scrollLeft = scrollStartX - movement;
+      });
+      function stopProjectDrag(event) {
+        if (moreProjectsTrack.hasPointerCapture(event.pointerId)) moreProjectsTrack.releasePointerCapture(event.pointerId);
+        moreProjectsTrack.classList.remove('is-dragging');
+      }
+      moreProjectsTrack.addEventListener('pointerup', stopProjectDrag);
+      moreProjectsTrack.addEventListener('pointercancel', stopProjectDrag);
+
+      moreProjectCards.forEach(card => {
+        const openButton = card.querySelector('.open-project');
+        const projectImage = card.querySelector('img');
+
+        openButton.addEventListener('click', event => {
+          event.stopPropagation();
+          openMoreProjectPopup(projectImage, openButton);
+        });
+        card.addEventListener('keydown', event => {
+          if (event.target !== card) return;
+          if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            openMoreProjectPopup(projectImage, card);
+          }
+        });
+      });
+      moreProjectPopupClose.addEventListener('click', closeMoreProjectPopup);
+      moreProjectPopup.addEventListener('click', event => {
+        if (event.target === moreProjectPopup) closeMoreProjectPopup();
+      });
+      document.addEventListener('keydown', event => {
+        if (event.key === 'Escape' && moreProjectPopup.classList.contains('is-open')) closeMoreProjectPopup();
       });
     });
   </script>
