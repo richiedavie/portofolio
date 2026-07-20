@@ -11,7 +11,6 @@
     href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@700;800&family=Syne:wght@700;800&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet" />
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css" />
 
   <style>
     /* ─── Reset ─── */
@@ -101,7 +100,6 @@
       color: #fff;
     }
 
-    /* Mobile hamburger */
     .menu-toggle {
       display: none;
       background: rgba(255, 255, 255, 0.12);
@@ -176,7 +174,6 @@
       background: #000;
     }
 
-    /* Subtle noise grain overlay */
     #hero::after {
       content: '';
       position: absolute;
@@ -187,7 +184,6 @@
       opacity: 0.35;
     }
 
-    /* Soft radial glow behind text */
     #hero::before {
       content: '';
       position: absolute;
@@ -201,18 +197,6 @@
       z-index: 0;
     }
 
-    /* video background — unchanged */
-    #hero video {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      z-index: -1;
-    }
-
-    /* ── Profile container layout — NOT changed per user request ── */
     #hero>div.profile-container {
       display: flex;
       flex-direction: row;
@@ -231,7 +215,6 @@
       flex: 1;
     }
 
-    /* ── Eyebrow tag ── */
     .hero-eyebrow {
       display: inline-block;
       font-family: 'DM Sans', sans-serif;
@@ -244,7 +227,6 @@
       animation: fadeUp 0.7s ease both;
     }
 
-    /* ── Main heading ── */
     #hero h1 {
       font-family: 'Syne', sans-serif;
       font-size: clamp(2.8rem, 6vw, 5rem);
@@ -256,7 +238,6 @@
       animation: fadeUp 0.7s 0.15s ease both;
     }
 
-    /* Blinking cursor */
     .typing-cursor {
       display: inline-block;
       width: 3px;
@@ -281,7 +262,6 @@
       }
     }
 
-    /* ── Subtitle lines ── */
     .hero-subtitle {
       font-family: 'DM Sans', sans-serif;
       font-size: 0.98rem;
@@ -292,7 +272,6 @@
       animation: fadeUp 0.7s 0.45s ease both;
     }
 
-    /* ── Divider line ── */
     .hero-divider {
       width: 48px;
       height: 1.5px;
@@ -302,7 +281,6 @@
       animation: fadeUp 0.7s 0.35s ease both;
     }
 
-    /* ── Hero CTA Button ── */
     .hero-button {
       display: inline-block;
       margin-top: 1.8rem;
@@ -342,7 +320,6 @@
       box-shadow: 0 10px 20px rgba(255, 255, 255, 0.1);
     }
 
-    /* ── Profile image — NOT changed per user request ── */
     #hero>div.profile-container img.profile-pic {
       width: 300px;
       height: 300px;
@@ -358,7 +335,6 @@
       box-shadow: 0 0 30px rgba(255, 255, 255, 0.6), 0 0 60px rgba(255, 255, 255, 0.2);
     }
 
-    /* ── Animations ── */
     @keyframes fadeUp {
       from {
         opacity: 0;
@@ -402,12 +378,8 @@
         height: 220px;
       }
     }
-  </style>
 
-  <!-- ─── All your ORIGINAL styles below (about, skills, portfolio, experience, footer, etc.) ─── -->
-  <style>
-    /* [Keep all your original section styles here — they are unchanged] */
-
+    /* ─── About & Portfolio Styles ─── */
     #about {
       padding: 5rem 2rem;
       background: #000;
@@ -447,206 +419,385 @@
       font-size: 2.5rem;
     }
 
-    .project-card {
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      border-radius: 10px;
-      box-shadow: 0 0 15px rgba(255, 255, 255, 0.1);
-      transition: transform 0.3s ease;
-    }
-
-    .project-card:hover {
-      transform: scale(1.05);
-      z-index: 2;
-    }
-
-    .project-card img {
-      width: 100%;
-      display: block;
-      filter: grayscale(100%);
-      transition: filter 0.3s ease;
-      border-radius: 10px;
-    }
-
-    .project-card:hover img {
-      filter: grayscale(0%);
-    }
-
-    /* More projects — horizontal, touch-friendly card rail */
-    #more-projects {
+    /* ══════════════════════════════════════
+       OTHER PROJECTS (BERSIH DARI GARIS OUTLINE)
+    ══════════════════════════════════════ */
+    #other-projects {
       padding: 1rem 2rem 5rem;
       background: #000;
       color: #fff;
     }
 
-    .more-projects-header {
-      max-width: 1140px;
-      margin: 0 auto 1.6rem;
-      display: flex;
-      align-items: end;
-      justify-content: space-between;
-      gap: 1.5rem;
+    #other-projects .section-heading {
+      max-width: 1100px;
+      margin: 0 auto 2.5rem;
+      text-align: center;
     }
 
-    .more-projects-header h2 {
-      margin: 0;
-      font-size: clamp(2rem, 4vw, 2.8rem);
+    #other-projects .section-heading h2 {
+      font-size: clamp(2rem, 4vw, 2.6rem);
       font-weight: 700;
+      margin-bottom: 0.5rem;
     }
 
-    .more-projects-header p {
-      margin: 0.55rem 0 0;
-      color: rgba(255, 255, 255, 0.56);
-    }
-
-    .project-slider-controls {
-      display: flex;
-      gap: 0.65rem;
-      flex: 0 0 auto;
-    }
-
-    .project-slider-button {
-      width: 42px;
-      height: 42px;
-      border: 1px solid rgba(255, 255, 255, 0.28);
-      border-radius: 50%;
-      background: transparent;
-      color: #fff;
-      cursor: pointer;
-      transition: background 0.2s ease, color 0.2s ease, transform 0.2s ease;
-    }
-
-    .project-slider-button:hover,
-    .project-slider-button:focus-visible {
-      background: #fff;
-      color: #000;
-      transform: translateY(-2px);
-      outline: none;
-    }
-
-    .more-projects-viewport {
-      max-width: 1140px;
+    #other-projects .section-heading p {
+      color: rgba(255, 255, 255, 0.65);
+      max-width: 720px;
       margin: 0 auto;
-      overflow: hidden;
+      line-height: 1.7;
     }
 
-    .more-projects-track {
-      display: flex;
-      gap: 1rem;
-      overflow-x: auto;
-      padding: 0.3rem 0.2rem 1.1rem;
-      scroll-snap-type: x mandatory;
-      scroll-behavior: smooth;
-      scrollbar-width: none;
-      cursor: grab;
-      user-select: none;
+    .other-project-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 1.5rem;
+      max-width: 1100px;
+      margin: 0 auto;
     }
 
-    .more-projects-track::-webkit-scrollbar { display: none; }
-    .more-projects-track.is-dragging { cursor: grabbing; scroll-snap-type: none; }
-
-    .more-project-card {
+    .other-project-card {
       position: relative;
-      flex: 0 0 min(82vw, 315px);
-      height: 420px;
+      height: 300px;
+      padding: 1.8rem;
+      border-radius: 20px;
       overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.16);
-      border-radius: 18px;
-      background: #151515;
-      scroll-snap-align: start;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
       cursor: pointer;
-      isolation: isolate;
-      transition: transform 0.28s ease, border-color 0.28s ease;
+      border: none;
+      outline: none;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.8);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      transition: transform 0.35s ease, box-shadow 0.35s ease;
     }
 
-    .more-project-card::after {
+    .other-project-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 40px rgba(0, 0, 0, 0.9);
+    }
+
+    .other-project-card::before {
       content: '';
       position: absolute;
       inset: 0;
+      background: linear-gradient(180deg,
+          rgba(0, 0, 0, 0.1) 0%,
+          rgba(0, 0, 0, 0.7) 60%,
+          rgba(0, 0, 0, 0.95) 100%);
+      z-index: 0;
+      transition: opacity 0.3s ease;
+    }
+
+    .other-project-card:hover::before {
+      background: linear-gradient(180deg,
+          rgba(0, 0, 0, 0.05) 0%,
+          rgba(0, 0, 0, 0.6) 60%,
+          rgba(0, 0, 0, 0.9) 100%);
+    }
+
+    .other-project-card>* {
+      position: relative;
       z-index: 1;
-      background: linear-gradient(180deg, transparent 28%, rgba(0, 0, 0, 0.9) 100%);
     }
 
-    .more-project-card:hover,
-    .more-project-card:focus-visible {
-      transform: translateY(-8px);
-      border-color: rgba(255, 255, 255, 0.7);
-      outline: none;
+    .project-badge {
+      display: inline-flex;
+      align-self: flex-start;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      color: #fff;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.6rem;
     }
 
-    .more-project-card img {
+    .other-project-card h3 {
+      font-size: 1.35rem;
+      font-weight: 700;
+      margin: 0;
+      color: #ffffff;
+      text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    }
+
+    .other-project-card--1 {
+      background-image: url('Kyouko.jpeg');
+    }
+
+    .other-project-card--2 {
+      background-image: url('Together.png');
+    }
+
+    .other-project-card--3 {
+      background-image: url('tutorial.png');
+    }
+
+    .other-project-card--4 {
+      background-image: url('Anko.jpeg');
+    }
+
+    .other-project-card--5 {
+      background-image: url('sayori ddlc.jpg');
+    }
+
+    .other-project-card--6 {
+      background-image: url('Screenshot (66).png');
+    }
+
+    @media (max-width: 992px) {
+      .other-project-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 680px) {
+      #other-projects {
+        padding: 1rem 1rem 3.5rem;
+      }
+
+      .other-project-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* ══════════════════════════════════════
+       POP-OUT IMAGE MODAL DENGAN PENJELASAN
+    ══════════════════════════════════════ */
+    .image-popup {
+      position: fixed;
+      inset: 0;
+      z-index: 3000;
+      display: grid;
+      place-items: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.88);
+      backdrop-filter: blur(14px);
+      -webkit-backdrop-filter: blur(14px);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    .image-popup.is-open {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    .image-popup-panel {
+      position: relative;
+      width: min(92%, 850px);
+      max-height: 90vh;
+      transform: scale(0.92);
+      transition: transform 0.3s cubic-bezier(0.2, 1, 0.3, 1);
+    }
+
+    .image-popup.is-open .image-popup-panel {
+      transform: scale(1);
+    }
+
+    .image-popup-close {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      z-index: 10;
+      width: 38px;
+      height: 38px;
+      border: 2px solid rgba(255, 255, 255, 0.8);
+      border-radius: 50%;
+      background: #000;
+      color: #fff;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+      transition: all 0.2s ease;
+    }
+
+    .image-popup-close:hover {
+      background: #fff;
+      color: #000;
+      transform: scale(1.1);
+    }
+
+    .image-popup-content {
+      width: 100%;
+      max-height: 85vh;
+      overflow-y: auto;
+      border-radius: 20px;
+      background: #0d0d12;
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .popup-media-container {
+      width: 100%;
+      background: #000;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      max-height: 55vh;
+      overflow: hidden;
+    }
+
+    .popup-media-container img,
+    .popup-media-container video {
       width: 100%;
       height: 100%;
-      display: block;
-      object-fit: cover;
-      filter: grayscale(100%);
-      transition: transform 0.45s ease, filter 0.35s ease;
+      max-height: 55vh;
+      object-fit: contain;
     }
 
-    .more-project-card:hover img,
-    .more-project-card:focus-visible img {
-      filter: grayscale(0%);
-      transform: scale(1.07);
+    .popup-details {
+      padding: 1.8rem 2rem;
+      background: #0d0d12;
+      text-align: left;
     }
 
-    .more-project-card-content {
-      position: absolute;
-      z-index: 2;
-      right: 1.35rem;
-      bottom: 1.25rem;
-      left: 1.35rem;
-    }
-
-    .more-project-card .project-type {
-      display: block;
-      margin-bottom: 0.45rem;
-      color: rgba(255, 255, 255, 0.7);
-      font-size: 0.73rem;
+    .popup-badge {
+      display: inline-block;
+      padding: 0.3rem 0.75rem;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.12);
+      color: #fff;
+      font-size: 0.72rem;
       font-weight: 700;
-      letter-spacing: 0.12em;
+      letter-spacing: 0.08em;
       text-transform: uppercase;
+      margin-bottom: 0.75rem;
     }
 
-    .more-project-card h3 { margin: 0; font-size: 1.28rem; font-weight: 700; }
-    .more-project-card .open-project {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.35rem;
-      margin-top: 0.7rem;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: #fff;
-      font: inherit;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    .more-project-card .open-project:hover,
-    .more-project-card .open-project:focus-visible {
-      text-decoration: underline;
-      outline: none;
-    }
-
-    .modal-content {
-      background: #111;
-      color: #fff;
-      border-radius: 10px;
-    }
-
-    .modal-header,
-    .modal-footer {
-      border: none;
-    }
-
-    footer {
-      text-align: center;
-      padding: 1rem 2rem;
-      background: #111;
-      font-size: 0.9rem;
+    .popup-details h3 {
+      font-size: 1.6rem;
       font-weight: 700;
-      user-select: none;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .popup-details p.popup-desc {
+      font-size: 0.95rem;
+      line-height: 1.6;
+      color: rgba(255, 255, 255, 0.75);
+      margin-bottom: 0.8rem;
+    }
+
+    .popup-details .popup-submeta {
+      font-size: 0.78rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.4);
+    }
+
+    body.popup-open {
+      overflow: hidden;
+    }
+
+    /* Section & General Utilities */
+    .portfolio-item {
+      height: 500px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-description {
+      max-height: 150px;
+      overflow-y: auto;
+      flex-grow: 1;
+    }
+
+    .portfolio-item .text-muted,
+    .portfolio-item .status {
+      color: rgba(255, 255, 255, 0.72) !important;
+      font-size: 0.9rem;
+      font-weight: 600;
+      margin-bottom: 0.75rem;
+    }
+
+    .portfolio-item>img,
+    .portfolio-item>video {
+      cursor: zoom-in;
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+
+    .portfolio-item>img:hover,
+    .portfolio-item>video:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 30px rgba(255, 255, 255, 0.15) !important;
+    }
+
+    /* Experience */
+    #experience .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 12px;
+    }
+
+    .page-title {
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.6px;
+      font-size: 36px;
+      margin-bottom: 42px;
+      color: #fff;
+    }
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 16px;
+    }
+
+    .experience-box {
+      background: #fff;
+      border-radius: 10px;
+      padding: 1.5rem 2rem;
+      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      min-height: 260px;
+    }
+
+    .experience-box:hover {
+      box-shadow: 0 0 30px rgba(255, 255, 255, 0.18);
+      transform: translateY(-3px);
+    }
+
+    .experience-box h4 {
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: #000;
+      flex-shrink: 0;
+      font-size: 1.05rem;
+    }
+
+    .experience-box time {
+      display: block;
+      font-size: 13px;
+      color: #000;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+
+    .experience-box p {
+      color: #666;
+      line-height: 1.6;
+      flex-grow: 1;
+      overflow-y: auto;
+      margin: 0;
+      font-size: 14px;
     }
 
     #skills {
@@ -695,247 +846,23 @@
       margin: 0;
     }
 
-    .portfolio-item {
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-description {
-      max-height: 150px;
-      overflow-y: auto;
-      flex-grow: 1;
-    }
-
-    .portfolio-item .text-muted,
-    .portfolio-item .status {
-      color: rgba(255, 255, 255, 0.72) !important;
+    footer {
+      text-align: center;
+      padding: 1rem 2rem;
+      background: #111;
       font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-      margin-bottom: 0.75rem;
-    }
-
-    .portfolio-item>img,
-    .portfolio-item>video {
-      cursor: zoom-in;
-      transition: transform 0.25s ease, box-shadow 0.25s ease;
-    }
-
-    .portfolio-item>img:hover,
-    .portfolio-item>video:hover,
-    .portfolio-item>img:focus-visible,
-    .portfolio-item>video:focus-visible {
-      transform: translateY(-6px);
-      box-shadow: 0 18px 38px rgba(255, 255, 255, 0.16) !important;
-      outline: none;
-    }
-
-    .image-popup {
-      position: fixed;
-      inset: 0;
-      z-index: 2000;
-      display: grid;
-      place-items: center;
-      padding: 24px;
-      background: rgba(0, 0, 0, 0.78);
-      backdrop-filter: blur(10px);
-      opacity: 0;
-      visibility: hidden;
-      transition: opacity 0.24s ease, visibility 0.24s ease;
-    }
-
-    .image-popup.is-open {
-      opacity: 1;
-      visibility: visible;
-    }
-
-    .image-popup-panel {
-      position: relative;
-      width: min(100%, 1050px);
-      max-height: min(82vh, 760px);
-      transform: translateY(16px) scale(0.98);
-      transition: transform 0.24s ease;
-    }
-
-    .image-popup.is-open .image-popup-panel {
-      transform: translateY(0) scale(1);
-    }
-
-    .image-popup-content {
-      width: 100%;
-      max-height: min(82vh, 760px);
-      padding: 18px;
-      overflow: auto;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      border-radius: 22px;
-      background: #101014;
-      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.58);
-    }
-
-    .image-popup-close {
-      position: absolute;
-      top: -12px;
-      right: -12px;
-      z-index: 10;
-      width: 32px;
-      height: 32px;
-      border: 2px solid rgba(255, 255, 255, 0.85);
-      border-radius: 50%;
-      background: #1a1a20;
-      color: #fff;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.95rem;
-      line-height: 1;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
-      transition: all 0.2s ease;
-    }
-
-    .image-popup-close:hover,
-    .image-popup-close:focus-visible {
-      background: #fff;
-      color: #000;
-      border-color: #fff;
-      transform: scale(1.1);
-      outline: none;
-    }
-
-    .image-popup-gallery {
-      display: grid;
-      gap: 14px;
-    }
-
-    .image-popup-gallery img,
-    .image-popup-gallery video {
-      display: block;
-      width: 100%;
-      max-height: calc(82vh - 72px);
-      object-fit: contain;
-      border-radius: 12px;
-    }
-
-    body.popup-open {
-      overflow: hidden;
-    }
-
-    @media (max-width: 576px) {
-      .image-popup {
-        padding: 12px;
-      }
-
-      .image-popup-content {
-        padding: 10px;
-        border-radius: 16px;
-      }
-
-      .image-popup-close {
-        top: -8px;
-        right: -8px;
-        width: 28px;
-        height: 28px;
-        font-size: 0.85rem;
-      }
-
-      .image-popup-gallery img,
-      .image-popup-gallery video {
-        max-height: calc(82vh - 20px);
-      }
-    }
-
-    /* Experience */
-    :root {
-      --bg: #000;
-      --text: #ffffff;
-      --muted: #666;
-      --card-bg: #fff;
-      --line: #fff;
-      --dot-size: 14px;
-      --radius: 14px;
-      --max-width: 980px;
-      --shadow: rgba(255, 255, 255, 0.1);
-    }
-
-    #experience .container {
-      max-width: var(--max-width);
-      margin: 0 auto;
-      padding: 12px;
-    }
-
-    .page-title {
-      text-align: center;
-      font-weight: 800;
-      letter-spacing: 0.6px;
-      font-size: 36px;
-      margin-bottom: 42px;
-      color: var(--text);
-    }
-
-    .experience-grid {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-    }
-
-    .experience-box {
-      background: #fff;
-      border-radius: 10px;
-      padding: 1.5rem 2rem;
-      box-shadow: 0 0 20px rgba(0, 0, 0, 0.15);
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      text-align: center;
-      display: flex;
-      flex-direction: column;
-      min-height: 260px;
-    }
-
-    .experience-box:hover {
-      box-shadow: 0 0 30px rgba(255, 255, 255, 0.18);
-      transform: translateY(-3px);
-    }
-
-    .experience-box h4 {
       font-weight: 700;
-      margin-bottom: 1rem;
-      color: #000;
-      flex-shrink: 0;
-      font-size: 1.05rem;
-    }
-
-    .experience-box time {
-      display: block;
-      font-size: 13px;
-      color: #000;
-      margin-bottom: 12px;
-      font-weight: 600;
-      letter-spacing: 0.2px;
-    }
-
-    .experience-box p {
-      color: #666;
-      line-height: 1.6;
-      flex-grow: 1;
-      overflow-y: auto;
-      margin: 0;
-      font-size: 14px;
+      user-select: none;
     }
 
     @media (max-width: 768px) {
       .experience-grid {
         grid-template-columns: 1fr;
       }
-    }
 
-    @media (max-width: 768px) {
       #about {
         flex-direction: column;
         text-align: center;
-      }
-
-      #about .bio {
-        flex: unset;
       }
 
       #about .profile-img {
@@ -946,22 +873,9 @@
         padding: 3rem 1rem;
       }
 
-      #skills h2 {
-        font-size: 2rem;
-        margin-bottom: 2rem;
-      }
-
       .portfolio-item {
         height: 400px;
       }
-
-      .project-description {
-        max-height: 100px;
-      }
-
-      #more-projects { padding: 0 1rem 3.5rem; }
-      .more-projects-header { align-items: flex-start; }
-      .more-projects-header p { font-size: 0.9rem; }
     }
   </style>
 </head>
@@ -976,7 +890,7 @@
         <li><a href="#hero" class="active">Home</a></li>
         <li><a href="#about">About</a></li>
         <li><a href="#portfolio">Portfolio</a></li>
-        <li><a href="#more-projects">More Projects</a></li>
+        <li><a href="#other-projects">Other Projects</a></li>
         <li><a href="#experience">Experience</a></li>
         <li><a href="#skills">Skills</a></li>
         <li><a href="#contact">Contact</a></li>
@@ -1001,13 +915,12 @@
           </a>
         </div>
       </div>
-      <!-- Profile picture — unchanged as per request -->
       <img src="Kyouko.jpeg" alt="Profile Image" class="profile-pic" />
     </div>
   </section>
 
   <!-- ══ ABOUT ══ -->
-  <section id="about" class="container slide-in-left">
+  <section id="about" class="container">
     <img src="WhatsApp Image 2026-07-20 at 18.51.15.jpeg" alt="About Me Image" class="profile-img">
     <div class="bio">
       <h2>About me</h2>
@@ -1029,19 +942,13 @@
           <h4 class="fw-bold">My first Landing Page - TrackinID</h4>
           <p class="text-muted">September 2025</p>
           <div class="project-description">
-            <p> This is the first Landing Page website i made on school, it's named TrackinID. TrackinID is a landing
-              page
-              I
-              built to showcase a fleet management system designed to simplify how vehicle owners and companies monitor
-              their operations in real time. The website highlights key features such as driver behavior monitoring,
-              smart
-              alert notifications, real-time vehicle tracking, and automated maintenance scheduling—all presented in a
-              clean
-              and interactive layout. By integrating all critical data into one centralized dashboard, TrackinID
-              eliminates
-              the need for multiple platforms, giving users an easy-to-understand, professional interface that
-              emphasizes
-              both functionality and modern design</p>
+            <p>This is the first Landing Page website i made on school, it's named TrackinID. TrackinID is a landing
+              page I built to showcase a fleet management system designed to simplify how vehicle owners and companies
+              monitor their operations in real time. The website highlights key features such as driver behavior
+              monitoring, smart alert notifications, real-time vehicle tracking, and automated maintenance
+              scheduling—all presented in a clean and interactive layout. By integrating all critical data into one
+              centralized dashboard, TrackinID eliminates the need for multiple platforms, giving users an
+              easy-to-understand, professional interface that emphasizes both functionality and modern design</p>
           </div>
           <img src="Screenshot 2025-10-04 123800.png" alt="TrackinID Project" class="img-fluid rounded mt-3" />
         </div>
@@ -1051,10 +958,9 @@
           <h4 class="fw-bold">Project Replica ID [Canva]</h4>
           <p class="text-muted">June 2024</p>
           <div class="project-description">
-            <p> this is the project where i need to make a one website, and actually i got canva here, and i make canva
-              here
-              just like exactly same like the original canva, even it's not that perfect and not that fit as like the
-              original canva, i have a skill in making a replica version of some web.</p>
+            <p>this is the project where i need to make a one website, and actually i got canva here, and i make canva
+              here just like exactly same like the original canva, even it's not that perfect and not that fit as like
+              the original canva, i have a skill in making a replica version of some web.</p>
           </div>
           <img src="image.png" alt="Replica Project" class="img-fluid rounded mt-3" />
         </div>
@@ -1065,8 +971,7 @@
           <p class="text-muted">September 2022</p>
           <div class="project-description">
             <p>Not to mention that i also make a minigames, especially this one, that was known as Feeding Frenzy, at
-              the
-              first time i made this, it's just for the old school project since i was in grade 7, but back then, i
+              the first time i made this, it's just for the old school project since i was in grade 7, but back then, i
               constantly update this minigame and surpsingly it gained a lot of views, i usually spend my time here on
               scratch a lot, and i have a skills on making some minigames.</p>
           </div>
@@ -1079,22 +984,19 @@
           <p class="text-muted">March 2023</p>
           <div class="project-description">
             <p>actually this project is just for fun, This project is a Hand Detection System built with Python,
-              leveraging
-              OpenCV and MediaPipe to track and recognize hand landmarks in real time using a webcam. The program
-              detects
-              and maps multiple hand points, allowing the system to recognize gestures such as raised fingers or
-              specific
-              hand positions. It includes a modular structure where the HandDetection class processes frames, extracts
-              landmark data, and evaluates gestures. The system can be extended to trigger actions (like opening
-              applications) based on detected hand gestures, making it a foundation for gesture-based interaction and
-              automation.</p>
+              leveraging OpenCV and MediaPipe to track and recognize hand landmarks in real time using a webcam. The
+              program detects and maps multiple hand points, allowing the system to recognize gestures such as raised
+              fingers or specific hand positions. It includes a modular structure where the HandDetection class
+              processes frames, extracts landmark data, and evaluates gestures. The system can be extended to trigger
+              actions (like opening applications) based on detected hand gestures, making it a foundation for
+              gesture-based interaction and automation.</p>
           </div>
           <img src="Screenshot (5209).png" alt="Hand Detection Project" class="img-fluid rounded mt-3" />
         </div>
       </div>
       <div class="col-md-6">
         <div class="portfolio-item p-4 rounded-4 bg-dark text-light shadow h-100">
-          <h4 class="fw-bold">Project Polri Moblie</h4>
+          <h4 class="fw-bold">Project Polri Mobile</h4>
           <p class="text-muted">June 2026</p>
           <div class="project-description">
             <p>This interface is a responsive, user-friendly Public Incident Reporting Dashboard designed for a modern
@@ -1132,87 +1034,77 @@
               multi-camera switching and dynamic rotation to showcase the product from various angles within a clean,
               studio-lit environment.</p>
           </div>
-          <video class="img-fluid rounded mt-3" muted loop autoplay playsinline preload="metadata"
-            aria-label="Product animation preview">
+          <video class="img-fluid rounded mt-3" muted loop autoplay playsinline preload="metadata">
             <source src="ProductAnimation.mp4" type="video/mp4" />
-            Your browser does not support MP4 video.
           </video>
         </div>
       </div>
     </div>
   </section>
 
-  <!-- ══ MORE PROJECTS ══ -->
-  <section id="more-projects" aria-labelledby="more-projects-title">
-    <div class="more-projects-header">
-      <div>
-        <h2 id="more-projects-title">More Projects</h2>
-        <p>Swipe through the collection, then select a project to see its story.</p>
-      </div>
-      <div class="project-slider-controls" aria-label="More project navigation">
-        <button class="project-slider-button" id="moreProjectsPrevious" type="button" aria-label="Previous projects">
-          <i class="fa-solid fa-arrow-left"></i>
-        </button>
-        <button class="project-slider-button" id="moreProjectsNext" type="button" aria-label="Next projects">
-          <i class="fa-solid fa-arrow-right"></i>
-        </button>
-      </div>
+  <!-- ══ OTHER PROJECTS ══ -->
+  <section id="other-projects">
+    <div class="section-heading">
+      <h2>Other Projects</h2>
+      <p>These are smaller custom experiments and creative pieces that explore a more personal visual direction outside
+        the main portfolio.</p>
     </div>
-    <div class="more-projects-viewport">
-      <div class="more-projects-track" id="moreProjectsTrack" aria-label="More project cards" tabindex="0">
-        <article class="more-project-card" tabindex="0" data-title="Anko Illustration" data-type="Digital art"
-          data-image="Anko.jpeg" data-description="A character illustration project focused on color, personality, and a polished digital-art presentation.">
-          <img src="Anko.jpeg" alt="Anko character illustration">
-          <div class="more-project-card-content"><span class="project-type">Digital art</span><h3>Anko Illustration</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
-        </article>
-        <article class="more-project-card" tabindex="0" data-title="Sayori Character Art" data-type="Illustration"
-          data-image="sayori ddlc.jpg" data-description="A character-art piece that explores a softer visual mood and a recognizable game-inspired design.">
-          <img src="sayori ddlc.jpg" alt="Sayori character artwork">
-          <div class="more-project-card-content"><span class="project-type">Illustration</span><h3>Sayori Character Art</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
-        </article>
-        <article class="more-project-card" tabindex="0" data-title="Kyouko Visual Study" data-type="Character design"
-          data-image="Kyouko.jpeg" data-description="A visual study built around character styling, composition, and a clean portrait treatment.">
-          <img src="Kyouko.jpeg" alt="Kyouko character visual study">
-          <div class="more-project-card-content"><span class="project-type">Character design</span><h3>Kyouko Visual Study</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
-        </article>
-        <article class="more-project-card" tabindex="0" data-title="Tutorial Showcase" data-type="Content design"
-          data-image="tutorial.png" data-description="A visual tutorial project designed to make information easier to follow with a clear, engaging layout.">
-          <img src="tutorial.png" alt="Tutorial project preview">
-          <div class="more-project-card-content"><span class="project-type">Content design</span><h3>Tutorial Showcase</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
-        </article>
-        <article class="more-project-card" tabindex="0" data-title="Creative Screenshot Series" data-type="Visual project"
-          data-image="Screenshot (66).png" data-description="A visual project exploring interface details and presentation through a concise screenshot series.">
-          <img src="Screenshot (66).png" alt="Creative screenshot series preview">
-          <div class="more-project-card-content"><span class="project-type">Visual project</span><h3>Creative Screenshot Series</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
-        </article>
-        <article class="more-project-card" tabindex="0" data-title="Together Artwork" data-type="Personal artwork"
-          data-image="Together.png" data-description="A personal artwork that brings together character-focused visuals in one finished composition.">
-          <img src="Together.png" alt="Together artwork preview">
-          <div class="more-project-card-content"><span class="project-type">Personal artwork</span><h3>Together Artwork</h3><button class="open-project" type="button">View project <i class="fa-solid fa-arrow-up-right-from-square"></i></button></div>
-        </article>
-      </div>
+
+    <div class="other-project-grid">
+      <article class="other-project-card other-project-card--1" data-img="Kyouko.jpeg" data-badge="BLANK"
+        data-title="BLANK" data-desc="-------------------------------------------------------------------------"
+        data-submeta="Lorem ipsum dolor jokowi amet">
+        <span class="project-badge">Blank</span>
+        <h3>New Data</h3>
+      </article>
+
+      <article class="other-project-card other-project-card--2" data-img="Together.png" data-badge="BLANK"
+        data-title="BLANK" data-desc="-------------------------------------------------------------------------"
+        data-submeta="Lorem ipsum dolor jokowi amet">
+        <span class="project-badge">Blank</span>
+        <h3>New Data</h3>
+      </article>
+
+      <article class="other-project-card other-project-card--3" data-img="tutorial.png" data-badge="BLANK"
+        data-title="BLANK" data-desc="-------------------------------------------------------------------------"
+        data-submeta="Lorem ipsum dolor jokowi amet">
+        <span class="project-badge">Blank</span>
+        <h3>New Data</h3>
+      </article>
+
+      <article class="other-project-card other-project-card--4" data-img="Anko.jpeg" data-badge="BLANK"
+        data-title="BLANK" data-desc="-------------------------------------------------------------------------"
+        data-submeta="Lorem ipsum dolor jokowi amet">
+        <span class="project-badge">Blank</span>
+        <h3>New Data</h3>
+      </article>
+
+      <article class="other-project-card other-project-card--5" data-img="sayori ddlc.jpg" data-badge="BLANK"
+        data-title="BLANK" data-desc="-------------------------------------------------------------------------"
+        data-submeta="Lorem ipsum dolor jokowi amet">
+        <span class="project-badge">Blank</span>
+        <h3>New Data</h3>
+      </article>
+
+      <article class="other-project-card other-project-card--6" data-img="Screenshot (66).png" data-badge="BLANK"
+        data-title="BLANK"
+        data-desc="A focused visual study of interface composition, spacing, and presentation details."
+        data-submeta="Lorem ipsum dolor jokowi amet">
+        <span class="project-badge">Blank</span>
+        <h3>New Data</h3>
+      </article>
     </div>
   </section>
 
+  <!-- ══ POP-OUT IMAGE MODAL CONTAINER ══ -->
   <div class="image-popup" id="imagePopup" aria-hidden="true">
-    <div class="image-popup-panel" role="dialog" aria-modal="true" aria-label="Project media">
-      <button class="image-popup-close" id="imagePopupClose" type="button" aria-label="Close image popup">
+    <div class="image-popup-panel" role="dialog" aria-modal="true">
+      <button class="image-popup-close" id="imagePopupClose" type="button" aria-label="Close">
         <i class="fa-solid fa-xmark"></i>
       </button>
       <div class="image-popup-content">
-        <div class="image-popup-gallery" id="imagePopupGallery"></div>
-      </div>
-    </div>
-  </div>
-
-  <!-- More Projects uses the same pop-out design as Portfolio. -->
-  <div class="image-popup" id="moreProjectPopup" aria-hidden="true">
-    <div class="image-popup-panel" role="dialog" aria-modal="true" aria-label="More project preview">
-      <button class="image-popup-close" id="moreProjectPopupClose" type="button" aria-label="Close project preview">
-        <i class="fa-solid fa-xmark"></i>
-      </button>
-      <div class="image-popup-content">
-        <div class="image-popup-gallery" id="moreProjectPopupGallery"></div>
+        <div class="popup-media-container" id="popupMediaContainer"></div>
+        <div class="popup-details" id="popupDetails"></div>
       </div>
     </div>
   </div>
@@ -1263,69 +1155,65 @@
   </section>
 
   <!-- ══ SKILLS ══ -->
-  <section id="skills" aria-label="Skills Section" class="slide-in-right">
-    <header>
-      <h2>Skills</h2>
-    </header>
-    <div class="container">
-      <div class="row g-4">
-        <div class="col-md-6">
-          <div class="skill-box">
-            <i class="fab fa-html5 fa-2x mb-3"></i>
-            <h4>HTML</h4>
-            <p>I have the ability to create clean, semantic HTML to effectively organize web content. I consider
-              accessibility and the purpose of every web content element to users and search engines. This maintains
-              orderly code, and provides a good framework for styling and scripting.</p>
-          </div>
+  <section id="skills" class="container my-5">
+    <h2>Skills</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="skill-box">
+          <i class="fab fa-html5 fa-2x mb-3"></i>
+          <h4>HTML</h4>
+          <p>I have the ability to create clean, semantic HTML to effectively organize web content. I consider
+            accessibility and the purpose of every web content element to users and search engines. This maintains
+            orderly code, and provides a good framework for styling and scripting.</p>
         </div>
-        <div class="col-md-6">
-          <div class="skill-box">
-            <i class="fab fa-css3-alt fa-2x mb-3"></i>
-            <h4>CSS</h4>
-            <p>I have strong skills in creating responsive and visually engaging layouts using CSS. By combining
-              Flexbox, Grid, and modern design principles, I ensure that websites adapt seamlessly across all screen
-              sizes. I also pay attention to detail in spacing, color harmony, and typography to achieve a balanced,
-              user-friendly design.</p>
-          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="skill-box">
+          <i class="fab fa-css3-alt fa-2x mb-3"></i>
+          <h4>CSS</h4>
+          <p>I have strong skills in creating responsive and visually engaging layouts using CSS. By combining Flexbox,
+            Grid, and modern design principles, I ensure that websites adapt seamlessly across all screen sizes. I also
+            pay attention to detail in spacing, color harmony, and typography to achieve a balanced, user-friendly
+            design.</p>
         </div>
-        <div class="col-md-6">
-          <div class="skill-box">
-            <i class="fab fa-js-square fa-2x mb-3"></i>
-            <h4>JavaScript</h4>
-            <p>Incorporating animations and other dynamic content ensures a more fulfilling and engaging user
-              experience. I also love improving form validation and other aspects of user experience. It makes the
-              website more intuitive and engaging. I concentrate on the functionality of the site but also the
-              importance of clean and efficient code.</p>
-          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="skill-box">
+          <i class="fab fa-js-square fa-2x mb-3"></i>
+          <h4>JavaScript</h4>
+          <p>Incorporating animations and other dynamic content ensures a more fulfilling and engaging user experience.
+            I also love improving form validation and other aspects of user experience. It makes the website more
+            intuitive and engaging. I concentrate on the functionality of the site but also the importance of clean and
+            efficient code.
+          </p>
         </div>
-        <div class="col-md-6">
-          <div class="skill-box">
-            <i class="fab fa-bootstrap fa-2x mb-3"></i>
-            <h4>Bootstrap</h4>
-            <p>Using the Bootstrap framework helps in fast-tracking the process of building applications while also
-              maintaining uniformity and a responsive design across various devices and screens. The framework’s grid
-              system and reusable components enable fast prototyping and constructing device interfaces that are
-              professional looking and responsive. In addition to that, I also personalize styled components in
-              Bootstrap to meet the various visual identities of different applications
-              .</p>
-          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="skill-box">
+          <i class="fab fa-bootstrap fa-2x mb-3"></i>
+          <h4>Bootstrap</h4>
+          <p>Using the Bootstrap framework helps in fast-tracking the process of building applications while also
+            maintaining uniformity and a responsive design across various devices and screens. The framework’s grid
+            system and reusable components enable fast prototyping and constructing device interfaces that are
+            professional looking and responsive. In addition to that, I also personalize styled components in Bootstrap
+            to meet the various visual identities of different applications .</p>
         </div>
-        <div class="col-md-6">
-          <div class="skill-box">
-            <i class="fas fa-cube fa-2x mb-3"></i>
-            <h4>Blender &amp; 3D Animation</h4>
-            <p>I use Blender to build product animations, working with camera movement, lighting, object animation,
-              and presentation to create clear visual stories.</p>
-          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="skill-box">
+          <i class="fas fa-cube fa-2x mb-3"></i>
+          <h4>Blender &amp; 3D Animation</h4>
+          <p>I use Blender to build product animations, working with camera movement, lighting, object animation, and
+            presentation to create clear visual stories.</p>
         </div>
-        <div class="col-md-6">
-          <div class="skill-box">
-            <i class="fas fa-mobile-screen-button fa-2x mb-3"></i>
-            <h4>Flutter</h4>
-            <p>I use Flutter and Dart to build responsive mobile interfaces. I am learning widget-based layouts,
-              navigation, state management, and how to create a smooth experience across Android and iOS devices,
-              as for the example, i make the app named sistem polri mobile</p>
-          </div>
+      </div>
+      <div class="col-md-6">
+        <div class="skill-box">
+          <i class="fas fa-mobile-screen-button fa-2x mb-3"></i>
+          <h4>Flutter</h4>
+          <p>I use Flutter and Dart to build responsive mobile interfaces. I am learning widget-based layouts,
+            navigation, state management, and how to create a smooth experience across Android and iOS devices, as for
+            the example, i make the app named sistem polri mobile.</p>
         </div>
       </div>
     </div>
@@ -1336,10 +1224,9 @@
     <h2 class="text-center mb-5">Contact Me</h2>
     <div class="row justify-content-center">
       <div class="col-md-6">
-        <p class="text-center">Feel free to reach out to me via email at<a href="mailto:jeremymauretz64@gmail.com">
-            jeremymauretz64@gmail.com</a></p>
-        <p class="text-center">Or you can connect with me on another social media, such on Instagram, Discord or
-          LiknedIn</p>
+        <p class="text-center">Feel free to reach out to me via email at <a
+            href="mailto:jeremymauretz64@gmail.com">jeremymauretz64@gmail.com</a></p>
+        <p class="text-center">Or connect with me on Instagram, Discord or LinkedIn.</p>
       </div>
     </div>
   </section>
@@ -1360,7 +1247,6 @@
       const tagline = document.getElementById('tagline');
       let i = 0;
 
-      // Add cursor span
       const cursor = document.createElement('span');
       cursor.className = 'typing-cursor';
       tagline.appendChild(cursor);
@@ -1408,156 +1294,113 @@
       toggle.addEventListener('click', () => navEl.classList.toggle('active'));
       navEl.addEventListener('click', e => { if (e.target.tagName === 'A') navEl.classList.remove('active'); });
 
-      // ── Portfolio media popup ──
+      // ── LIGHTBOX & DETAILED POPUP SYSTEM ──
       const imagePopup = document.getElementById('imagePopup');
       const imagePopupClose = document.getElementById('imagePopupClose');
-      const imagePopupGallery = document.getElementById('imagePopupGallery');
-      const portfolioMedia = document.querySelectorAll('.portfolio-item > img, .portfolio-item > video');
-      let lastFocusedMedia = null;
+      const popupMediaContainer = document.getElementById('popupMediaContainer');
+      const popupDetails = document.getElementById('popupDetails');
 
-      function closeImagePopup() {
+      function closePopup() {
         imagePopup.classList.remove('is-open');
         imagePopup.setAttribute('aria-hidden', 'true');
         document.body.classList.remove('popup-open');
-        imagePopupGallery.replaceChildren();
-        if (lastFocusedMedia) lastFocusedMedia.focus();
+        popupMediaContainer.replaceChildren();
+        popupDetails.replaceChildren();
       }
 
-      function openImagePopup(media, focusTarget = media) {
-        lastFocusedMedia = focusTarget;
-        let popupMedia;
-
-        if (media.tagName === 'VIDEO') {
-          popupMedia = document.createElement('video');
-          popupMedia.src = media.currentSrc || media.querySelector('source')?.src;
-          popupMedia.controls = true;
-          popupMedia.autoplay = true;
-          popupMedia.muted = true;
-          popupMedia.playsInline = true;
-          popupMedia.setAttribute('aria-label', media.getAttribute('aria-label') || 'Project video');
+      function openPopup({ mediaSrc, isVideo = false, badge, title, desc, submeta }) {
+        // Render Media
+        if (isVideo) {
+          const video = document.createElement('video');
+          video.src = mediaSrc;
+          video.controls = true;
+          video.autoplay = true;
+          video.muted = true;
+          popupMediaContainer.replaceChildren(video);
         } else {
-          popupMedia = document.createElement('img');
-          popupMedia.src = media.currentSrc || media.src;
-          popupMedia.alt = media.alt;
+          const img = document.createElement('img');
+          img.src = mediaSrc;
+          img.alt = title || 'Project Preview';
+          popupMediaContainer.replaceChildren(img);
         }
 
-        imagePopupGallery.replaceChildren(popupMedia);
+        // Render Details
+        popupDetails.replaceChildren();
+        if (badge) {
+          const badgeEl = document.createElement('span');
+          badgeEl.className = 'popup-badge';
+          badgeEl.textContent = badge;
+          popupDetails.appendChild(badgeEl);
+        }
+        if (title) {
+          const titleEl = document.createElement('h3');
+          titleEl.textContent = title;
+          popupDetails.appendChild(titleEl);
+        }
+        if (desc) {
+          const descEl = document.createElement('p');
+          descEl.className = 'popup-desc';
+          descEl.textContent = desc;
+          popupDetails.appendChild(descEl);
+        }
+        if (submeta) {
+          const submetaEl = document.createElement('div');
+          submetaEl.className = 'popup-submeta';
+          submetaEl.textContent = submeta;
+          popupDetails.appendChild(submetaEl);
+        }
+
         imagePopup.classList.add('is-open');
         imagePopup.setAttribute('aria-hidden', 'false');
         document.body.classList.add('popup-open');
-        imagePopupClose.focus();
       }
 
-      portfolioMedia.forEach(media => {
-        media.tabIndex = 0;
-        media.setAttribute('role', 'button');
-        media.setAttribute('aria-label', `Open ${media.alt || media.getAttribute('aria-label') || 'project media'} in a popup`);
-        media.addEventListener('click', () => openImagePopup(media));
-        media.addEventListener('keydown', event => {
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            openImagePopup(media);
-          }
+      // Klik pada Card "Other Projects"
+      const otherCards = document.querySelectorAll('.other-project-card');
+      otherCards.forEach(card => {
+        card.addEventListener('click', () => {
+          openPopup({
+            mediaSrc: card.getAttribute('data-img'),
+            badge: card.getAttribute('data-badge'),
+            title: card.getAttribute('data-title'),
+            desc: card.getAttribute('data-desc'),
+            submeta: card.getAttribute('data-submeta')
+          });
         });
       });
 
-      imagePopupClose.addEventListener('click', closeImagePopup);
-      imagePopup.addEventListener('click', event => {
-        if (event.target === imagePopup) closeImagePopup();
-      });
-      document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && imagePopup.classList.contains('is-open')) closeImagePopup();
-      });
+      // Klik pada Media Portfolio Utama
+      const portfolioItems = document.querySelectorAll('#portfolio .portfolio-item');
+      portfolioItems.forEach(item => {
+        const media = item.querySelector('img, video');
+        if (!media) return;
 
-      // ── More projects slider ──
-      const moreProjectsTrack = document.getElementById('moreProjectsTrack');
-      const moreProjectCards = document.querySelectorAll('.more-project-card');
-      const previousProjects = document.getElementById('moreProjectsPrevious');
-      const nextProjects = document.getElementById('moreProjectsNext');
-      const moreProjectPopup = document.getElementById('moreProjectPopup');
-      const moreProjectPopupClose = document.getElementById('moreProjectPopupClose');
-      const moreProjectPopupGallery = document.getElementById('moreProjectPopupGallery');
-      let pointerStartX = 0;
-      let scrollStartX = 0;
-      let wasDragging = false;
-      let lastFocusedMoreProjectButton = null;
+        media.addEventListener('click', () => {
+          const title = item.querySelector('h4')?.innerText;
+          const desc = item.querySelector('.project-description')?.innerText;
+          const submeta = item.querySelector('.text-muted')?.innerText;
+          const isVideo = media.tagName === 'VIDEO';
+          const mediaSrc = isVideo ? (media.currentSrc || media.querySelector('source')?.src) : media.src;
 
-      function slideProjects(direction) {
-        const card = moreProjectCards[0];
-        const distance = card ? card.offsetWidth + 16 : 320;
-        moreProjectsTrack.scrollBy({ left: direction * distance, behavior: 'smooth' });
-      }
-
-      function openMoreProjectPopup(image, button) {
-        const popupImage = document.createElement('img');
-        popupImage.src = image.currentSrc || image.src;
-        popupImage.alt = image.alt;
-        lastFocusedMoreProjectButton = button;
-        moreProjectPopupGallery.replaceChildren(popupImage);
-        moreProjectPopup.classList.add('is-open');
-        moreProjectPopup.setAttribute('aria-hidden', 'false');
-        document.body.classList.add('popup-open');
-        moreProjectPopupClose.focus();
-      }
-
-      function closeMoreProjectPopup() {
-        moreProjectPopup.classList.remove('is-open');
-        moreProjectPopup.setAttribute('aria-hidden', 'true');
-        document.body.classList.remove('popup-open');
-        moreProjectPopupGallery.replaceChildren();
-        if (lastFocusedMoreProjectButton) lastFocusedMoreProjectButton.focus();
-      }
-
-      previousProjects.addEventListener('click', () => slideProjects(-1));
-      nextProjects.addEventListener('click', () => slideProjects(1));
-      moreProjectsTrack.addEventListener('keydown', event => {
-        if (event.key === 'ArrowLeft') { event.preventDefault(); slideProjects(-1); }
-        if (event.key === 'ArrowRight') { event.preventDefault(); slideProjects(1); }
-      });
-
-      moreProjectsTrack.addEventListener('pointerdown', event => {
-        pointerStartX = event.clientX;
-        scrollStartX = moreProjectsTrack.scrollLeft;
-        wasDragging = false;
-        moreProjectsTrack.setPointerCapture(event.pointerId);
-        moreProjectsTrack.classList.add('is-dragging');
-      });
-      moreProjectsTrack.addEventListener('pointermove', event => {
-        if (!moreProjectsTrack.hasPointerCapture(event.pointerId)) return;
-        const movement = event.clientX - pointerStartX;
-        if (Math.abs(movement) > 5) wasDragging = true;
-        moreProjectsTrack.scrollLeft = scrollStartX - movement;
-      });
-      function stopProjectDrag(event) {
-        if (moreProjectsTrack.hasPointerCapture(event.pointerId)) moreProjectsTrack.releasePointerCapture(event.pointerId);
-        moreProjectsTrack.classList.remove('is-dragging');
-      }
-      moreProjectsTrack.addEventListener('pointerup', stopProjectDrag);
-      moreProjectsTrack.addEventListener('pointercancel', stopProjectDrag);
-
-      moreProjectCards.forEach(card => {
-        const openButton = card.querySelector('.open-project');
-        const projectImage = card.querySelector('img');
-
-        openButton.addEventListener('click', event => {
-          event.stopPropagation();
-          openMoreProjectPopup(projectImage, openButton);
-        });
-        card.addEventListener('keydown', event => {
-          if (event.target !== card) return;
-          if (event.key === 'Enter' || event.key === ' ') {
-            event.preventDefault();
-            openMoreProjectPopup(projectImage, card);
-          }
+          openPopup({
+            mediaSrc,
+            isVideo,
+            badge: 'MAIN PORTFOLIO',
+            title,
+            desc,
+            submeta
+          });
         });
       });
-      moreProjectPopupClose.addEventListener('click', closeMoreProjectPopup);
-      moreProjectPopup.addEventListener('click', event => {
-        if (event.target === moreProjectPopup) closeMoreProjectPopup();
+
+      imagePopupClose.addEventListener('click', closePopup);
+      imagePopup.addEventListener('click', e => {
+        if (e.target === imagePopup) closePopup();
       });
-      document.addEventListener('keydown', event => {
-        if (event.key === 'Escape' && moreProjectPopup.classList.contains('is-open')) closeMoreProjectPopup();
+      document.addEventListener('keydown', e => {
+        if (e.key === 'Escape' && imagePopup.classList.contains('is-open')) closePopup();
       });
+
     });
   </script>
 
