@@ -528,23 +528,23 @@
     }
 
     .other-project-card--1 {
-      background-image: url('Kyouko.jpeg');
+      background-image: url('feedingfrenzy.png');
     }
 
     .other-project-card--2 {
-      background-image: url('Together.png');
+      background-image: url('scratchmath.png');
     }
 
     .other-project-card--3 {
-      background-image: url('tutorial.png');
+      background-image: url('cleantheroom.png');
     }
 
     .other-project-card--4 {
-      background-image: url('Anko.jpeg');
+      background-image: url('fish.png');
     }
 
     .other-project-card--5 {
-      background-image: url('sayori ddlc.jpg');
+      background-image: url('3Danimation.png');
     }
 
     .other-project-card--6 {
@@ -1051,11 +1051,12 @@
     </div>
 
     <div class="other-project-grid">
-      <article class="other-project-card other-project-card--1" data-img="Kyouko.jpeg" data-badge="BLANK"
-        data-title="BLANK" data-desc="-------------------------------------------------------------------------"
+      <article class="other-project-card other-project-card--1" data-img="feedingfrenzy.png" data-badge="BLANK"
+        data-title="Feeding Frenzy - Scratch"
+        data-desc="-------------------------------------------------------------------------"
         data-submeta="Lorem ipsum dolor jokowi amet">
         <span class="project-badge">Blank</span>
-        <h3>New Data</h3>
+        <h3>Feeding Frenzy - Scratch</h3>
       </article>
 
       <article class="other-project-card other-project-card--2" data-img="Together.png" data-badge="BLANK"
@@ -1079,7 +1080,7 @@
         <h3>New Data</h3>
       </article>
 
-      <article class="other-project-card other-project-card--5" data-img="sayori ddlc.jpg" data-badge="BLANK"
+      <article class="other-project-card other-project-card--5" data-img="3D-Animation.mp4" data-video="true" data-badge="BLANK"
         data-title="BLANK" data-desc="-------------------------------------------------------------------------"
         data-submeta="Lorem ipsum dolor jokowi amet">
         <span class="project-badge">Blank</span>
@@ -1361,6 +1362,7 @@
         card.addEventListener('click', () => {
           openPopup({
             mediaSrc: card.getAttribute('data-img'),
+            isVideo: card.dataset.video === 'true',
             badge: card.getAttribute('data-badge'),
             title: card.getAttribute('data-title'),
             desc: card.getAttribute('data-desc'),
